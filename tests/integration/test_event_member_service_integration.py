@@ -1,0 +1,1 @@
+# skriva integrationstester mellan de två klasserna i denna fil
