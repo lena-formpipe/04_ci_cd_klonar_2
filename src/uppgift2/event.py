@@ -1,21 +1,25 @@
+from src.uppgift2.member_service import MemberService
 """
 Event - beskriver ett arrangemang, och kan registrera nya medlemmar
 :param name Medlemmens namn
 :param ms MemberService
 """
 class Event:
-    def __init__(self):
+    def __init__(self, event_name):
+        self.name = event_name
         self.members_on_event = []
 
-    # Registrerar en ny medlem i klubben,
-    # OCH skriver upp denna på arrangemanget
-    # skapa INTEGRATION TEST: anropar metod i klassen Member_service
-    def register_new_member(self, name, ms):
-        return
+    # kontrollerar om medlem existerar
+    #  - om inte så registreras en ny medlem i klubben,
+   # skriver sedan upp denna medlem på arrangemanget
+    def register_new_member(self, member_name, ms):
+        # om medlemmen inte finns - lägg till i member_service,
+        if member_name not in ms.member_list:
+            ms.add_member(member_name)
+        if member_name in ms.member_list:
+            self.sign_up(member_name)
 
 
-    # Lägger till en medlem på arrangemanget
-    # skapa UNIT TEST
-    # Strategi:
-    def sign_up(self, name):
-        self.members_on_event.append(name)
+    # Skriver upp en medlem på arrangemanget
+    def sign_up(self, member_name):
+        self.members_on_event.append(member_name)
