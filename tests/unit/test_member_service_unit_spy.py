@@ -1,14 +1,12 @@
-from src.uppgift2.member_service import MemberService
+import pytest
+# behöver inte importera det som används via fixtures
 
-def test_add_member(mocker):
-    # arrange
-    # skapa objekt MemberService och en member
-    # skapa en spion till metoden add_member
-    member_service_object = MemberService()
-    member1 = "Stina"
-    spy = mocker.spy(member_service_object, "add_member")
+@pytest.mark.unit
+def test_add_member(mocker, member_service, member1):
+    # arrange - se fixtures
+    spy = mocker.spy(member_service, "add_member")
     # act
-    member_service_object.add_member(member1)
-
+    member_service.add_member(member1)
+    # assert
     assert spy.call_count == 1
-    assert member1 in member_service_object.member_list
+    assert member1 in member_service.member_list
