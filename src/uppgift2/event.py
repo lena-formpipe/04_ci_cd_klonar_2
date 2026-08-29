@@ -1,4 +1,4 @@
-from src.uppgift2.member_service import MemberService
+
 """
 Event - beskriver ett arrangemang, och kan registrera nya medlemmar
 :param name Medlemmens namn
