@@ -10,22 +10,24 @@ class ShoppingCartItem:
 
 # TODO testa denna
 # kundvagnen har koppling till ett inventory från vilken artiklarna hämtas
+# lagret skickas in utifrån (dependency injection)
 class ShoppingCart:
-    def __init__(self):
-        self.inventory = Inventory()
+    def __init__(self, inventory: Inventory):
+        self.inventory = inventory
         self.items_in_cart = {}
 
-    def add_inventory_item(self, item: InventoryItem, amount):
-        item = self.inventory.get_item(item.id)
+    def add_inventory_item(self, item_id, amount):
+        item = self.inventory.get_item(item_id)
+        # om item inte finns blir värdet None
+        if item is None:
+            raise ValueError(f"Item id {item} not in stock.")
         # om amount inte är större än noll, ge ValueError
         if amount <= 0:
             raise ValueError("amount must be higher than 0")
-        try:
-            self.inventory.reduce_amount_in_inventory(item, amount)
-            # item_to_add_to_cart = self.inventory.get_item(item)
-            self.items_in_cart[item] = ShoppingCartItem(item.id, item.name, item.price, amount )
-        except ValueError as e:
-            print(f"Fel: {e}")
+
+        self.inventory.reduce_amount_in_inventory(item_id, amount)
+        self.items_in_cart[item_id] = ShoppingCartItem(item.id, item.name, item.price, amount )
+
 
 
 
