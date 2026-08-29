@@ -25,9 +25,8 @@ class Inventory:
         return self._items.get(item_id)
 
 
-    # Inventory är den klass som äger lagersaldot,
-    # Så inventory bör vara den enda sanningskällan för om det finns tillräckligt med artiklar eller inte.
-    # ShoppingCart ska bara fråga eller försöka och lita på svaret.
+    # Inventory är den klass som äger lagersaldot, den vet om det finns tillräckligt med artiklar eller inte.
+    # ShoppingCart ska bara fråga och lita på svaret.
     # Inventory ska skydda lagret oavsett vem som anropar, och aldrig gå under 0
     def reduce_amount_in_inventory(self, item_id, amount):
         item = self.get_item(item_id)
