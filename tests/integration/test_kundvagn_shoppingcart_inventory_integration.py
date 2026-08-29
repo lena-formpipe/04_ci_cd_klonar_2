@@ -35,35 +35,36 @@ def cart_with_stol(inventory_with_stol):
 
 def test_shopping_cart_add_inventory_item__item_not_exists_in_inventory(cart_empty):
     # arrange - cart skapas i fixture
-    cart = cart_empty
     item_id_not_exist = 999
     amount_not_exist = 100
     # act
     with pytest.raises(ValueError):
-        cart.add_inventory_item(item_id_not_exist, amount_not_exist)
+        cart_empty.add_inventory_item(item_id_not_exist, amount_not_exist)
 
-    assert cart.items_in_cart == {}
+    assert cart_empty.items_in_cart == {}
 
 
-def test_shopping_cart_add_inventory_item__item_exists_in_inventory(item_stol, ):
-    # arrange - TODO rätta till fixture
-    inv = Inventory()
-    cart = ShoppingCart(inv)
-    inv.add_item_to_inventory(item_stol)
-    cart.add_inventory_item(item_id=1, amount =2)
+# def test_shopping_cart_add_inventory_item__item_exists_in_inventory(item_stol, ):
+def test_shopping_cart_add_inventory_item__item_exists_in_inventory(inventory_empty, item_stol ):
+    # arrange - blev något fel efter ändring till fixture
+    new_inventory = inventory_empty
+    new_inventory.add_item_to_inventory(item_stol)
+    cart = ShoppingCart(new_inventory)
+
+    cart.add_inventory_item(item_stol.id, amount =2)
 
     assert cart.items_in_cart[1].amount_in_cart == 2
-    assert inv.get_item(1).amount_in_stock == 8
+    assert new_inventory.get_item(1).amount_in_stock == 8
 
 
-def test_shopping_cart_add_inventory_item__amount_too_few(item_stol):
-    inv = Inventory()
-    cart = ShoppingCart(inv)
-    inv.add_item_to_inventory(item_stol)
+def test_shopping_cart_add_inventory_item__amount_too_few(cart_empty, inventory_empty, item_stol):
+    # inv = Inventory()
+    # cart = ShoppingCart(inv)
+    inventory_empty.add_item_to_inventory(item_stol)
     # act
     with pytest.raises(ValueError):
-        cart.add_inventory_item(1, 20)
+        cart_empty.add_inventory_item(1, 20)
 
-    assert cart.items_in_cart == {}
-    assert inv.get_item(1).amount_in_stock == 10
+    assert cart_empty.items_in_cart == {}
+    assert inventory_empty.get_item(1).amount_in_stock == 10
 
