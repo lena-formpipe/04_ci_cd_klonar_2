@@ -1,0 +1,22 @@
+1 Diskutera tillsammans
+
+1.1 Vilka fördelar kan du se med CI & CD på din arbetsplats?
+CD har vi inte eftersom det är ett standardprogram som sedan kundanpassas och levereras till kund för installation.
+CI innebär regelbunden kontroll och införande av kod för all utveckling såtill main,
+så att vi inte behöver vänta på en "big-bang" en gång per år...
+
+
+1.2 Vad är poängen med linting?
+Poängen med linting är att man får en automatisk kontroll av koden att den följer standarden.
+Linting hittar fel och buggar, men också avvikelser från en gemensam kod-standard.
+Koden blir mer korrekt och mer lättläst för alla, om den följer standarden.
+
+1.3 Hur arbetar man med git och flera branches inom ett team?
+Vill du ändra något på din arbetsplats?
+Det som en utvecklare jobbar med för stunden utvecklas i en bransch som inte stör andra utvecklare.
+När man är klar pushas koden till dev-branschen, för att sedan se om det funkar tillsammans.
+Inför en release tas sedan dev in i main.
+
+1.4 Vad är en pull request?
+En pull request låter andra utvecklare granska koden innan den kombineras med annan bransch.
+Använd pull request i stället för att pusha till main.

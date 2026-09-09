@@ -4,12 +4,7 @@
 
 | Uppgift                  | Status    |
 |--------------------------|-----------|
-| 1 diskutera              | ej utförd |
-| 2 projekt som stödjer CI | ej utförd |
+| 1 fil 1_diskussion.txt   | klar      |
+| 2 projekt som stödjer CI | klar      |
 | 3 extra                  | ej utförd |
 
-
-Svårigheter:
-
-- i uppgift 4 blev det test problem, förstår inte hur dependency injection påverkar i fixtures vid flera led 
-(det blev iaf fel som jag rättade till men kanske inte på korrekt sätt)
