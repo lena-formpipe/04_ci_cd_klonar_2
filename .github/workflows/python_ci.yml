@@ -1,0 +1,62 @@
+
+# Workflow definierar vilka triggers som startar CI/CD och vilka steg som ska köras.
+# Den talar om för GitHub Actions vad som ska köras och när.
+# Workflow = YML-fil som innehåller
+# name
+# on
+# jobs: build-and-test
+
+# YML är ett format på konfigurationsfiler, som bygger på indentering, precis som Python.
+# Om projektet innehåller en YML-fil i rätt mapp, startar GitHub en Action.
+
+name: veckouppgift 4 CI/CD
+
+# Talar om när jobben ska köras.
+# Denna inställning bevakar när man gör push eller pull request mot branch "main".
+on:
+  push:
+    branches: ["main", "dev"]
+  pull_request:
+    branches: ["main", "dev"]
+
+# talar om vilka jobb som finns
+# yaml-filer använder kebab-case
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. hämta koden
+      - name: checka ut koden från repot
+        uses: actions/checkout@v7
+
+      # 2. Installera Python
+      # anropar från GitHubs marketplace...
+      - name: Inställningar för Python
+        uses: actions/setup-python@v7
+        with:
+            python-version: "3.14"
+
+      # 3. Installera beroenden typ pytest mm som finns i requirements.txt
+      # pip | betyder i princip ny rad
+      - name: Installera beroende
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install flake8 pytest
+
+      # 4. Linting
+      # går igenom koden och ser om den är bra skriven enligt standard för kod
+      # följer koden normala konventioner, hittar vanliga fel i koden
+      # flake tittar i mapparna src och tests
+      - name: Linta koden med flake8
+        run: flake8 src tests
+
+      # 5. Kör tester - kan använda markers
+      # accepterar max fail = 1
+      - name: Kör testerna med pytest
+        run: pytest --maxfail=1 --disable-warnings -q
+
+
+      # För CD behöver vi lägga till flera steg.
+      # Ett jobb "deploy" som publicerar en ny version av appen, så den kan användas.
+
