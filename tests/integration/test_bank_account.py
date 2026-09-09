@@ -39,6 +39,7 @@ def test_transaction_transfer__not_transfer(
 @pytest.mark.integration
 # integrationstest
 # testar transaction, bank account, logger
+# lägger till en rad för att se att det går pusha till main
 def test_transaction_transfer__is_transferred(
         mocker, logger, transaction, bank_account1, bank_account2
 ):
