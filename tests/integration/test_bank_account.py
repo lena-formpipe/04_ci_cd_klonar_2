@@ -1,3 +1,10 @@
+import pytest
+
+
+@pytest.mark.integration
+# integrationstest: testar interaktionen BankAccount --> Logger
+# BankAccount skapas med en riktig Logger
+# verifierar att BankAccount faktiskt använder Logger.log
 def test_bank_account_deposit(mocker, bank_account1, logger):
     # arrange
     amount1 = 100
@@ -10,6 +17,10 @@ def test_bank_account_deposit(mocker, bank_account1, logger):
     spy.assert_called_once()
 
 
+@pytest.mark.integration
+# integrationstest: testar interaktionen
+# Transaction, BankAccount <-> BankAccount, Logger
+# verifierar också Logger
 def test_transaction_transfer__not_transfer(
         mocker, bank_account1, bank_account2, logger, transaction
 ):
@@ -25,6 +36,9 @@ def test_transaction_transfer__not_transfer(
     assert spy.call_count == 2
 
 
+@pytest.mark.integration
+# integrationstest
+# testar transaction, bank account, logger
 def test_transaction_transfer__is_transferred(
         mocker, logger, transaction, bank_account1, bank_account2
 ):
@@ -40,8 +54,4 @@ def test_transaction_transfer__is_transferred(
     assert spy.call_count == 3
 
 
-# testar logger för sig
-def test_logger__spy_logs_transaction(mocker, logger):
-    spy = mocker.spy(logger, 'log')
-    logger.log("Test")
-    assert spy.call_count == 1
+
