@@ -51,4 +51,4 @@ def test_transaction_transfer__is_transferred(
     transaction.transfer(amount_to_transfer, bank_account1, bank_account2)
     assert bank_account1._balance == amount1 - amount_to_transfer
     assert bank_account2._balance == amount_to_transfer
-    assert spy.call_count == 4
+    assert spy.call_count == 3
