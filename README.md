@@ -8,3 +8,4 @@
 | 2 projekt som stödjer CI | klar      |
 | 3 extra                  | ej utförd |
 
+Gör en ändring i readme för att testa pull request från en branch "ovning".
