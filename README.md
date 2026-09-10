@@ -6,6 +6,6 @@
 |--------------------------|-----------|
 | 1 fil 1_diskussion.txt   | klar      |
 | 2 projekt som stödjer CI | klar      |
-| 3 extra                  | ej utförd |
+| 3 fil 3_extra            | ej utförd |
 
 Ändrar denna rad igen som övning.
