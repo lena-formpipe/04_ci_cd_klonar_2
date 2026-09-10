@@ -7,9 +7,12 @@ Utvecklaren måste även installera och aktivera pre-commit lokalt på sin dator
 Pytest körs sedan automatiskt vid commit och om testarna misslyckas så stoppas commiten.
 Detta är inte helt säker metod eftersom det görs lokalt och det går att hoppa över funktionen genom att skriva:
 "git commit -m "mitt meddelande" --no-verify"
+Pre-commit är mer en bekvämlighet för att hitta fel tidigt.
 
 3.2b: STOPPA med GITHUB Actions och branch protection.
+Branch protection + CI är den viktiga säkerhetsmekanismen.
 I GitHub- repository: settings - branches - add branch ruleset
 aktivera "Require status checks to pass"
 aktivera gärna "Require branches to be up to date before merging"
 add checks "build-and-test"
+-> nu lyser inte knappen grön "merge pull request" ifall testerna failar
