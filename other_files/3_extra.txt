@@ -1,5 +1,12 @@
 uppgift 3 Extra
 
+3.1 ●	ta reda på hur man kan konfigurera branches på GitHub,
+så att de t.ex. kräver att en pull request måste godkännas av ett visst antal kollegor
+- rulesets, require a pull request before merging
+- required approvals = X (sätt 0 för egna stuideprojekt som inte innefattar andra)
+kan specificera require reviewfrom specific teams, from code owners etc.
+--> Jag har inte ställin detta eftersom jag då antar att jag är själv i projektet.
+
 3.2 Konfigurera repositoryt så att det stoppar en commit om testerna misslyckas, och inte bara rapporterar fel.
 3.2a: STOPPA LOKALT på utvecklarens dator genom att lägga till fil direkt under repot.
 .pre-commit-config.yaml (notera att filändelsen måste vara yaml).
@@ -16,3 +23,9 @@ aktivera "Require status checks to pass"
 aktivera gärna "Require branches to be up to date before merging"
 add checks "build-and-test"
 -> nu lyser inte knappen grön "merge pull request" ifall testerna failar
+
+3.3 utforska vilka python-relaterade actions som finns på github
+- viktigast: setup-python
+- pytest - kör automatiska tester i CI
+- sedan skulle AI rekommendera Ruff framför flake8 för linting, åtminstone i nya projekt.
+- mypy, gör statisk typkontroll i python.
