@@ -2,10 +2,8 @@
 # klonar del 4 (spårbara transaktioner) av veckouppgift 2
 
 
-| Uppgift                  | Status    |
-|--------------------------|-----------|
-| 1 fil 1_diskussion.txt   | klar      |
-| 2 projekt som stödjer CI | klar      |
-| 3 fil 3_extra            | ej utförd |
-
-Ändrar denna rad igen som övning.
+| Uppgift                  | Status |
+|--------------------------|--------|
+| 1 fil 1_diskussion.txt   | klar   |
+| 2 projekt som stödjer CI | klar   |
+| 3 fil 3_extra            | 50%    |
